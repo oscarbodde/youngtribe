@@ -83,51 +83,13 @@ if (form && successMsg) {
   });
 }
 
-// Ervaringen carousel
-const track = document.getElementById('testimonialTrack');
-if (track) {
-  const slides = Array.from(track.children);
-  const dotsWrap = document.getElementById('testimonialDots');
-  const prevBtn = document.getElementById('prevTestimonial');
-  const nextBtn = document.getElementById('nextTestimonial');
-  let index = 0;
-  let timer = null;
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'carousel-dot';
-    dot.setAttribute('aria-label', `Ga naar ervaring ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
+// Ervaringen: doorlopende marquee (dupliceer de kaarten voor een naadloze lus)
+const marqueeTrack = document.getElementById('marqueeTrack');
+if (marqueeTrack) {
+  const originals = Array.from(marqueeTrack.children);
+  originals.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    marqueeTrack.appendChild(clone);
   });
-  const dots = Array.from(dotsWrap.children);
-
-  function render() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-  }
-  function goTo(i) {
-    index = (i + slides.length) % slides.length;
-    render();
-    restartTimer();
-  }
-  function next() { goTo(index + 1); }
-  function prev() { goTo(index - 1); }
-  function restartTimer() {
-    if (timer) clearInterval(timer);
-    timer = setInterval(next, 6000);
-  }
-
-  if (prevBtn) prevBtn.addEventListener('click', prev);
-  if (nextBtn) nextBtn.addEventListener('click', next);
-
-  const carousel = document.getElementById('testimonialCarousel');
-  if (carousel) {
-    carousel.addEventListener('mouseenter', () => timer && clearInterval(timer));
-    carousel.addEventListener('mouseleave', restartTimer);
-  }
-
-  render();
-  restartTimer();
 }
