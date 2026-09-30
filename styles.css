@@ -63,7 +63,13 @@
     padding:12px 0;
   }
   .nav-inner{display:flex; align-items:center; justify-content:space-between;}
-  .brand{display:flex; align-items:center; gap:10px; font-size:1.15rem; font-weight:700; text-decoration:none; color:var(--cream);}
+  .brand{display:flex; align-items:center; gap:11px; font-size:1.15rem; font-weight:700; text-decoration:none; color:var(--cream);}
+  /* Merkteken: erft de kleur van de tekst ernaast, dus het kleurt mee met de header */
+  .brand .mark{height:21px; width:auto; flex:none;}
+  .footer-brand .mark{height:19px; width:auto; flex:none;}
+  @media (max-width:420px){
+    .brand .mark{height:19px;}
+  }
   header.scrolled .brand{color:var(--ink);}
   nav.links{display:flex; align-items:center; gap:34px;}
   nav.links a{
@@ -333,14 +339,30 @@
   }
 
   /* ---------- Aanmelden ---------- */
-  .aanmelden{background:var(--ink); color:var(--cream);}
-  .aanmelden .section-head p{color:rgba(251,246,238,0.72); margin-top:14px; font-size:1.05rem;}
+  /* Kampvuurfoto als achtergrond, met een donkere gradient eroverheen voor leesbaarheid */
+  .aanmelden{
+    position:relative; overflow:hidden;
+    color:var(--cream);
+    background:#0d0b1f var(--fire-photo) center/cover no-repeat;
+  }
+  .aanmelden::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(85% 75% at 82% 12%, rgba(243,112,63,0.24) 0%, rgba(243,112,63,0) 62%),
+      linear-gradient(180deg, rgba(13,11,31,0.88) 0%, rgba(22,18,66,0.68) 38%, rgba(13,11,31,0.9) 100%);
+    pointer-events:none;
+  }
+  .aanmelden > .wrap{position:relative; z-index:2;}
+  .aanmelden .section-head p{color:rgba(251,246,238,0.78); margin-top:14px; font-size:1.05rem;}
   .aanmelden .section-head p a{color:var(--coral); text-decoration:underline; text-underline-offset:3px;}
   .aanmelden-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:48px; align-items:start;}
 
   .talk-card{
-    background:linear-gradient(150deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border:1px solid rgba(251,246,238,0.16);
+    background:linear-gradient(150deg, rgba(20,16,60,0.58), rgba(13,11,31,0.44));
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(251,246,238,0.2);
     border-radius:var(--radius);
     padding:32px 28px;
   }
@@ -350,13 +372,19 @@
   .trust-list li{position:relative; padding-left:22px; font-size:0.94rem; color:rgba(251,246,238,0.75);}
   .trust-list li::before{content:""; position:absolute; left:0; top:6px; width:9px; height:9px; border-radius:50%; background:linear-gradient(135deg, var(--orchid), var(--coral));}
 
-  form{background:rgba(251,246,238,0.04); border:1px solid rgba(251,246,238,0.14); border-radius:var(--radius); padding:34px;}
+  form{
+    background:rgba(13,11,31,0.58);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(251,246,238,0.2);
+    border-radius:var(--radius); padding:34px;
+  }
   .field-group{margin-bottom:22px;}
   .field-group label{display:block; font-size:0.92rem; font-weight:600; margin-bottom:8px; color:rgba(251,246,238,0.85);}
   .field-group input,.field-group textarea{
     width:100%; padding:13px 15px; border-radius:10px;
-    border:1px solid rgba(251,246,238,0.22);
-    background:rgba(251,246,238,0.06);
+    border:1px solid rgba(251,246,238,0.24);
+    background:rgba(8,7,22,0.45);
     color:var(--cream); font-family:inherit; font-size:1rem;
   }
   .field-group input::placeholder,.field-group textarea::placeholder{color:rgba(251,246,238,0.4);}
@@ -369,8 +397,8 @@
   .event-card{
     display:flex; align-items:center; gap:12px;
     padding:14px 16px; border-radius:12px;
-    border:1.5px solid rgba(251,246,238,0.18);
-    background:rgba(251,246,238,0.04);
+    border:1.5px solid rgba(251,246,238,0.2);
+    background:rgba(8,7,22,0.4);
     transition:border-color .2s ease, background .2s ease;
   }
   .event-card input{accent-color:var(--coral); width:17px; height:17px;}
@@ -453,32 +481,4 @@
   .page-header p{color:rgba(255,255,255,0.9); margin-top:18px; max-width:560px; font-size:1.1rem; line-height:1.55;}
   @media (max-width:720px){
     .page-header{padding-top:120px;}
-  }
-
-  /* ---------- Kampvuurband boven de footer ---------- */
-  .fire-band{
-    position:relative;
-    padding:0;
-    min-height:480px;
-    display:flex; align-items:flex-end;
-    background:#0d0b1f var(--fire-photo) center bottom/cover no-repeat;
-  }
-  .fire-band::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(13,11,31,0.12) 0%, rgba(13,11,31,0.12) 45%, rgba(13,11,31,0.72) 100%);
-    pointer-events:none;
-  }
-  .fire-band .wrap{position:relative; z-index:2; width:100%; padding-top:56px; padding-bottom:52px;}
-  .fire-band p{
-    font-family:'Bricolage Grotesque', sans-serif; font-weight:700;
-    font-size:clamp(1.5rem, 3vw, 2.3rem); color:#fff; line-height:1.25;
-  }
-  .fire-band span{
-    display:block; margin-top:10px;
-    font-family:'Inter', sans-serif; font-weight:400;
-    font-size:1.02rem; color:rgba(255,255,255,0.82);
-  }
-  @media (max-width:720px){
-    .fire-band{min-height:340px;}
   }
