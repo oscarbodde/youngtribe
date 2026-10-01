@@ -212,7 +212,7 @@
   .step h3{font-size:1.25rem; margin-bottom:8px;}
   .step p{color:var(--ink-soft); max-width:520px;}
 
-  .events-head{margin-top:76px;}
+  .block-gap{margin-top:76px;}
   .events-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
   .event-tile{
     text-align:left; border:none; border-radius:var(--radius);
@@ -266,6 +266,33 @@
     margin:-32px 0 32px; font-size:1.02rem; color:var(--ink-soft); max-width:680px;
   }
   .cities-line strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- WhatsApp: lage drempel om even iets te vragen ---------- */
+  .wa{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:11px 20px; border-radius:100px;
+    font-size:0.96rem; font-weight:600; text-decoration:none;
+    color:var(--ink); background:rgba(255,255,255,0.72);
+    border:1.5px solid rgba(24,22,50,0.16);
+    transition:border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .wa svg{width:17px; height:17px; flex:none;}
+  .wa:hover{border-color:var(--coral); color:var(--coral); background:#fff;}
+  .wa:focus-visible{outline:2px solid var(--coral); outline-offset:2px;}
+  /* variant voor donkere vlakken */
+  .wa-light{
+    color:var(--cream); background:rgba(251,246,238,0.07);
+    border-color:rgba(251,246,238,0.28);
+  }
+  .wa-light:hover{color:#fff; background:rgba(243,112,63,0.2); border-color:var(--coral);}
+
+  .wa-row{
+    display:flex; flex-wrap:wrap; align-items:center; gap:14px;
+    margin-top:30px;
+  }
+  .wa-row span{color:var(--ink-soft); font-size:1.02rem;}
+  .talk-card .wa{margin-top:24px;}
+  .footer-wa{padding-bottom:30px;}
 
   /* ---------- Veerkracht / benefits ---------- */
   .veerkracht{background:var(--ink); color:var(--cream); border-top:1px solid var(--line);}
