@@ -34,7 +34,7 @@ Het merkteken in de header en de footer zit rechtstreeks in de HTML, dus daar is
 
 **4. Het aanmeldformulier verstuurt nog niets.** Het laat alleen een bevestiging zien. Koppel het aan een backend, een formulierdienst of een CRM wanneer je zover bent. Zie de opmerking onderin `index.html`.
 
-**5. De coaches en de ervaringen.** Op `over-ons.html` staan nog drie kaartjes met "Naam coach". De negen reviews op de homepage zijn verzonnen ter illustratie.
+**5. De portretten van de begeleiders en de ervaringen.** Op `over-ons.html` staan zeven begeleiders met een gekleurde fotoplek en hun beginletter. Vervang die door echte portretten: zet de foto's vierkant bijgesneden in `images/` en vervang per kaart `<div class="person-photo">...</div>` door `<img class="person-photo" src="images/naam.jpg" alt="Naam">`. De negen reviews op de homepage zijn verzonnen ter illustratie.
 
 ## Teksten en kleuren aanpassen
 
